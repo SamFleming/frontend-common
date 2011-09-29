@@ -1,8 +1,8 @@
-window.theTeam || (window.theTeam = {});
+window.fc || (window.fc = {});
 
 /*
 	usage:
-		var pagination = new theTeam.Pagination($element, 5, opts).bind('change', function(event) {
+		var pagination = new fc.Pagination($element, 5, opts).bind('change', function(event) {
 			// ...
 		});
 	
@@ -28,7 +28,7 @@ window.theTeam || (window.theTeam = {});
 			event.from - page moving from
 			event.to - page moving to
 */
-theTeam.Pagination = (function() {
+fc.Pagination = (function() {
 	function Pagination(container, pages, opts) {
 		var pagination = this;
 		
@@ -114,7 +114,7 @@ theTeam.Pagination = (function() {
 		
 		this._$container.html(htmlStr);
 		return this;
-	}
+	};
 	PaginationProto.changeTo = function(num, preventFire) {
 		if (this.current === num) { return this; }
 		

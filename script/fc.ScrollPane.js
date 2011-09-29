@@ -1,4 +1,4 @@
-window.theTeam || (window.theTeam = {});
+window.fc || (window.fc = {});
 
 /*
 	Takes an element and makes it able to animate from page to page horizontally.
@@ -6,7 +6,7 @@ window.theTeam || (window.theTeam = {});
 	Requires $.fn.staticSize
 	
 	usage:
-		var scrollPane = new theTeam.ScrollPane('#list-of-items', {
+		var scrollPane = new fc.ScrollPane('#list-of-items', {
 			margin: 10,
 			duration: 250,
 			easing: 'easeInOutQuint'
@@ -38,7 +38,7 @@ window.theTeam || (window.theTeam = {});
 		next() - Move to the next page
 		prev() - Move to the previous page
 */
-theTeam.ScrollPane = (function() {
+fc.ScrollPane = (function() {
 	function ScrollPane($itemContainer, opts) {
 		$itemContainer = $($itemContainer);
 		
