@@ -208,6 +208,7 @@
 	
 	$('html').ajaxSend(function(event, xhr, settings) {
 		function getCookie(name) {
+			var result;
 			return (result = new RegExp('(?:^|; )' + encodeURIComponent(name) + '=([^;]*)').exec(document.cookie))
 				? decodeURIComponent(result[1]) : undefined;
 		}
