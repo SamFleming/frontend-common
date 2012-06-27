@@ -1,4 +1,58 @@
 (function(window, document, undefined) {
+	$.fn.scaleRemove = function() {
+		if ( !$.support.transition ) {
+			this.remove();
+			return;
+		}
+	
+		this.each(function() {
+			var $this = $(this);
+			var $animBox = $this.clone(true);
+			//debugger;
+			$animBox.vendorCss({
+				position: 'absolute',
+				top: 0,
+				left: 0,
+				right: 0,
+				margin: 0,
+				transformOrigin: '50% 20%'
+			});
+	
+			$this.height( $this.outerHeight() ).empty();
+	
+			$this.css({
+				overflow: 'visible',
+				background: 'none',
+				border: 'none',
+				padding: 0
+			});
+	
+			if ($this.css('position') === 'static') {
+				$this.css('position', 'relative');
+			}
+	
+			$animBox.append( $this.contents() ).appendTo($this);
+	
+			$this.transition({
+				height: 0,
+				marginTop: 0,
+				marginBottom: 0
+			}, {
+				duration: 500,
+				complete: function() {
+					$this.remove();
+				}
+			});
+	
+			$animBox.transition({
+				transform: 'scale(0.2)',
+				opacity: 0
+			}, {
+				duration: 300
+			});
+		});
+	
+	};
 	// Add an event for click or enter on keyboard
 	/*$.fn.activate = function(callback) {
 		this.prop('tabIndex', '0').click(callback).keyup(function(event){
