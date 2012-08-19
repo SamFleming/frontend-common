@@ -93,16 +93,6 @@
 			        effects queue. If false, the animation will begin immediately.
 	*/
 	$.fn.transition = function(properties, opts) {
-		if (!transitionProp) {
-			return this.animate(properties, opts);
-		}
-		
-		opts = $.extend({
-			duration: 500,
-			easing: 'swing',
-			complete: $.noop
-		}, opts || {});
-		
 		var translatedProps = {},
 			propsStr = '';
 			
@@ -113,6 +103,17 @@
 				propsStr += (propsStr ? ',' : '') + prop;
 			}
 		});
+
+		if (!transitionProp) {
+			return this.animate(translatedProps, opts);
+		}
+		
+		opts = $.extend({
+			duration: 500,
+			easing: 'swing',
+			complete: $.noop
+		}, opts || {});
+		
 		
 		this.queue(function(next) {
 			var $elm = $(this);
